@@ -15,21 +15,29 @@ yarn add nestjs-cookie
 Use the `@Cookie` decorator to grab a cookie from the `cookie` header.
 
 ```ts
+import { Controller } from '@nestjs/common';
 import { Cookie } from 'nestjs-cookie';
 
-@Get()
-async myMethod(@Cookie('some_token') token: string) {
-  console.log(token);
+@Controller()
+export class MyController {
+  @Get()
+  async myMethod(@Cookie('some_token') token: string) {
+    console.log(token);
+  }
 }
 ```
 
 You can also grab a `Map` of all cookies using the `@Cookies` decorator
 
 ```ts
+import { Controller } from '@nestjs/common';
 import { Cookies } from 'nestjs-cookie';
 
-@Get()
-async myMethod(@Cookies() cookies: Map<string, string>) {
-  console.log(cookies);
+@Controller()
+export class MyController {
+  @Get()
+  async myMethod(@Cookies() cookies: Map<string, string>) {
+    console.log(cookies);
+  }
 }
 ```
